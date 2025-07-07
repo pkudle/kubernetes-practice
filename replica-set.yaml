@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: my-rs
+  labels:
+    app: pratik-app
+spec:
+  template:
+    metadata:
+      labels:
+        app: pratik-app
+    spec:
+      containers:
+      - name: my-container
+        image: nginx:latest
+        ports:
+          - containerPort: 80
+  replicas: 3
+  selector: 
+    matchExpression:
+      - { key: app, operator: In, values : [pratik-app]}
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  labels: 
+    app: pratik-app
+  name: my-rc-service
+spec:
+  ports:
+    - targetPort: 80
+      port: 80
+      protocol: TCP
+      name: http
+  selector: 
+    app: pratik-app
+  type: NodePort
