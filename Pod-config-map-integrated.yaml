@@ -18,6 +18,5 @@ spec:
       - name: MYSQL_ROOT_PASSWORD
         valueFrom:
           configMapKeyRef:
-            name: my-cred
-            key: USER_N
-            
+            name: my-config
+            key: PASSWORD
