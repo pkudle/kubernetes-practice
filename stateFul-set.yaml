@@ -20,7 +20,7 @@ spec:
             - name: MYSQL_ROOT_PASSWORD
               value: "redhat"
   selector:
-    matchlabels:
+    matchLabels:
       app: my-sts-app
 
   replicas: 3
